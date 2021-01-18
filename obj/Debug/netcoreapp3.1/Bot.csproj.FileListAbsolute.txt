@@ -1,0 +1,9 @@
+D:\Projects\FinancialChat\Bot\obj\Debug\netcoreapp3.1\Bot.AssemblyInfoInputs.cache
+D:\Projects\FinancialChat\Bot\obj\Debug\netcoreapp3.1\Bot.AssemblyInfo.cs
+D:\Projects\FinancialChat\Bot\obj\Debug\netcoreapp3.1\Bot.csproj.CoreCompileInputs.cache
+D:\Projects\FinancialChat\Bot\bin\Debug\netcoreapp3.1\Bot.deps.json
+D:\Projects\FinancialChat\Bot\bin\Debug\netcoreapp3.1\Bot.dll
+D:\Projects\FinancialChat\Bot\bin\Debug\netcoreapp3.1\Bot.pdb
+D:\Projects\FinancialChat\Bot\obj\Debug\netcoreapp3.1\Bot.dll
+D:\Projects\FinancialChat\Bot\obj\Debug\netcoreapp3.1\Bot.pdb
+D:\Projects\FinancialChat\Bot\obj\Debug\netcoreapp3.1\Bot.csprojAssemblyReference.cache
