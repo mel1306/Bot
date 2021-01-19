@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "/Q887EKgCde1hawqZsfpR8OdCfw5xfeb3cLqCmvRql9R2f9HK4GfAYRel3MOTeZHMXJEK6plZicfji+AftePLw==",
+  "dgSpecHash": "dA+u3YggtL3nV9L7QEgisxOaP9oUS/X44uryiziLWqdCcfP53UzgBBZqfxXHi30dYOOPWUU0lrACCv5HmBcBFQ==",
   "success": true,
   "projectFilePath": "D:\\Projects\\FinancialChat\\Bot\\Bot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Melvin\\.nuget\\packages\\csvhelper\\21.0.0\\csvhelper.21.0.0.nupkg.sha512",
     "C:\\Users\\Melvin\\.nuget\\packages\\jint\\2.11.58\\jint.2.11.58.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Melvin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.10\\microsoft.extensions.dependencyinjection.abstractions.3.1.10.nupkg.sha512",
+    "C:\\Users\\Melvin\\.nuget\\packages\\microsoft.extensions.options\\3.1.10\\microsoft.extensions.options.3.1.10.nupkg.sha512",
+    "C:\\Users\\Melvin\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.10\\microsoft.extensions.primitives.3.1.10.nupkg.sha512",
     "C:\\Users\\Melvin\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Melvin\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Melvin\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",

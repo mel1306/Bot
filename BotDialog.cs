@@ -18,16 +18,18 @@ namespace Bot
             var text = result.Request.Text;
             var stockCode = text.Split("=")[1];
             var stock = _csv.GetStock(stockCode);
-            var message = string.Empty;
-
-            if (stock != null)
-                message = stock.ToString();
-            else
-                message = $"{stockCode} was not found.";
-
+            var message = stock != null ? stock.ToString() : $"{stockCode} was not found.";
             result.SendResponse(message);
+        }
+
+        [Expression("@all")]
+        public void AllExpressions(Context context, Result result)
+        {
+            result.SendResponse(new Response
+            {
+                Type = "NotCommand",
+                Text = result.Request.Text
+            });
         }
     }
 }
-
-//  /stock=aapl.us

@@ -1,4 +1,5 @@
 ﻿using MessageQueue;
+using Microsoft.Extensions.Options;
 using RabbitMQ;
 using Syn.Bot.Oscova;
 using System;
@@ -10,24 +11,47 @@ namespace Bot
     {
         private readonly OscovaBot _bot;
         private readonly RabbitMQService _rabbitMQ;
+        private readonly object completedEventLock = new object();
+        private EventHandler<NotCommandEventArgs> _notCommand;
+        public event EventHandler<NotCommandEventArgs> NotCommand
+        {
+            add
+            {
+                if (_notCommand == null)
+                {
+                    _notCommand += value;
+                }
+            }
+            remove
+            {
+                _notCommand -= value;
+            }
+        }
 
-        //public BotService(IMessageQueue messageQueue)
-        public BotService(RabbitMQInfo info)
+        public BotService(IOptions<RabbitMQInfo> info)
         {
             var regex = new Regex("(\\/stock=|\\/STOCK=)+([a-z|A-Z]+\\.)+[a-z|A-Z]{1,5}$");
-            _rabbitMQ = new RabbitMQService(info);
+            var allRegex = new Regex(".");
+
+            _rabbitMQ = new RabbitMQService(info.Value);
             _bot = new OscovaBot();
             _bot.CreateRecognizer("hex", regex);
-            //_bot.Dialogs.Add(new BotDialog(messageQueue));
+            _bot.CreateRecognizer("all", allRegex);
             _bot.Dialogs.Add(new BotDialog());
             _bot.Trainer.StartTraining();
 
             _bot.MainUser.ResponseReceived += (sender, eventArgs) =>
             {
-                var csvResponse = eventArgs.Response.Text;
-                //Console.WriteLine(eventArgs.Response.Text);
-                //Aqui envio el mensaje al chat por medio de RabbitMQ
-                SendMessageToRabbitMQ(csvResponse);
+                var response = eventArgs.Response.Text;
+                if (eventArgs.Response.Type.Equals("NotCommand"))
+                {
+                    var args = new NotCommandEventArgs { Text = response, Date = DateTime.Now };
+                    OnNotCommand(args);
+                }
+                else
+                {
+                    SendMessageToRabbitMQ(response);
+                }
             };
         }
 
@@ -40,6 +64,12 @@ namespace Bot
         {
             var evaluationResult = _bot.Evaluate(command);
             evaluationResult.Invoke();
+        }
+
+        protected virtual void OnNotCommand(NotCommandEventArgs e)
+        {
+            var handler = _notCommand;
+            handler?.Invoke(this, e);
         }
     }
 }
