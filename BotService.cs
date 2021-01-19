@@ -28,12 +28,14 @@ namespace Bot
             }
         }
 
-        public BotService(IOptions<RabbitMQInfo> info)
+        public BotService(IOptions<RabbitMQInfo> info) : this(info.Value) { }
+
+        public BotService(RabbitMQInfo info)
         {
             var regex = new Regex("(\\/stock=|\\/STOCK=)+([a-z|A-Z]+\\.)+[a-z|A-Z]{1,5}$");
             var allRegex = new Regex(".");
 
-            _rabbitMQ = new RabbitMQService(info.Value);
+            _rabbitMQ = new RabbitMQService(info);
             _bot = new OscovaBot();
             _bot.CreateRecognizer("hex", regex);
             _bot.CreateRecognizer("all", allRegex);

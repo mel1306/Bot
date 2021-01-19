@@ -10,9 +10,6 @@ namespace RabbitMQ
     {
         private const string QueueName = "FinancialChatQueue";
         private readonly IModel _channel;
-        //private readonly EventingBasicConsumer _consumer;
-
-        //public event EventHandler MessagePublished;
 
         public RabbitMQService(RabbitMQInfo rabbitMq)
         {
@@ -34,15 +31,6 @@ namespace RabbitMQ
                 autoDelete: false,
                 arguments: null
             );
-            //_consumer = new EventingBasicConsumer(_channel);
-            //_consumer.Received += (sender, e) =>
-            //{
-            //    var body = e.Body.ToArray();
-            //    var jsonMessage = Encoding.UTF8.GetString(body);
-            //    var message = JsonConvert.DeserializeObject<string>(jsonMessage);
-            //    ConsumeMessage(message);
-            //};
-            //_channel.BasicConsume(QueueName, true, _consumer);
         }
 
         public void PublishMessage(string message)
@@ -56,20 +44,5 @@ namespace RabbitMQ
                 body: body
             );
         }
-
-        //protected virtual void OnMessagePublished(EventArgs e)
-        //{
-        //    EventHandler handler = MessagePublished;
-        //    //handler?.Invoke(this, e);
-        //    if (handler != null)
-        //    {
-        //        handler(this, e);
-        //    }
-        //}
-
-        //private void ConsumeMessage(string message)
-        //{
-        //    OnMessagePublished(EventArgs.Empty);
-        //}
     }
 }
