@@ -29,7 +29,8 @@ namespace Bot
         public void AllExpressions(Context context, Result result)
         {
             var messageJson = JsonConvert.DeserializeObject<Message>(result.Request.Text);
-            var regex = new Regex("(\\/stock=|\\/STOCK=)+([a-z|A-Z]+\\.)+[a-z|A-Z]{1,5}$");
+            //var regex = new Regex("(\\/stock=|\\/STOCK=)+([a-z|A-Z]+\\.)+[a-z|A-Z]{1,5}$");
+            var regex = new Regex("(\\/stock=|\\/STOCK=)+(\\S+\\.)+[a-z|A-Z]{1,5}$");
             if (regex.IsMatch(messageJson.Text))
             {
                 var text = messageJson.Text;
